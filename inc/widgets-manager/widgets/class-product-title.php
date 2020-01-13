@@ -192,15 +192,15 @@ class Product_Title extends Widget_Base {
 				'label'     => __( 'Alignment', 'header-footer-elementor' ),
 				'type'      => Controls_Manager::CHOOSE,
 				'options'   => [
-					'left'    => [
+					'left'   => [
 						'title' => __( 'Left', 'header-footer-elementor' ),
 						'icon'  => 'eicon-text-align-left',
 					],
-					'center'  => [
+					'center' => [
 						'title' => __( 'Center', 'header-footer-elementor' ),
 						'icon'  => 'eicon-text-align-center',
 					],
-					'right'   => [
+					'right'  => [
 						'title' => __( 'Right', 'header-footer-elementor' ),
 						'icon'  => 'eicon-text-align-right',
 					],
@@ -231,8 +231,8 @@ class Product_Title extends Widget_Base {
 		$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			[
-				'name'      => 'title_typography',
-				'scheme'    => Scheme_Typography::TYPOGRAPHY_1,
+				'name'     => 'title_typography',
+				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .elementor-widget-heading .elementor-heading-title a',
 			]
 		);
