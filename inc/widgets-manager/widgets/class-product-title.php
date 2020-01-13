@@ -343,4 +343,13 @@ class Product_Title extends Widget_Base {
 	</div>
 		<?php
 	}
+	/**
+	 * Render Product Title output in the editor.
+	 *
+	 * Written as a Backbone JavaScript template and used to generate the live preview.
+	 *
+	 * @since 1.2.0
+	 * @access protected
+	 */
+	protected function _content_template() {}
 }

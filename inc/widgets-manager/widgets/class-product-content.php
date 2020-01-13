@@ -15,13 +15,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 /**
- * HFE Post content
+ * HFE Product content
  *
- * HFE widget for Post Content.
+ * HFE widget for Product Content.
  *
  * @since x.x.x
  */
-class Post_Content extends Widget_Base {
+class Product_Content extends Widget_Base {
 	/**
 	 * Retrieve the widget name.
 	 *
@@ -32,7 +32,7 @@ class Post_Content extends Widget_Base {
 	 * @return string Widget name.
 	 */
 	public function get_name() {
-		return 'post-content';
+		return 'product-content';
 	}
 	/**
 	 * Retrieve the widget title.
@@ -44,7 +44,7 @@ class Post_Content extends Widget_Base {
 	 * @return string Widget title.
 	 */
 	public function get_title() {
-		return __( 'Post Content', 'header-footer-elementor' );
+		return __( 'Product Content', 'header-footer-elementor' );
 	}
 	/**
 	 * Retrieve the widget icon.
@@ -76,7 +76,7 @@ class Post_Content extends Widget_Base {
 		return [ 'hfe-widgets' ];
 	}
 	/**
-	 * Register Post content controls controls.
+	 * Register Product content controls controls.
 	 *
 	 * @since x.x.x
 	 * @access protected
@@ -87,7 +87,7 @@ class Post_Content extends Widget_Base {
 
 	/**
 	 *
-	 * Register Post content General Controls.
+	 * Register Product content General Controls.
 	 *
 	 * @since x.x.x * @access protected.
 	 */
@@ -122,7 +122,7 @@ class Post_Content extends Widget_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .hfe-post-content-parent' => 'text-align: {{VALUE}};',
+					'{{WRAPPER}} .hfe-product-content-parent' => 'text-align: {{VALUE}};',
 				],
 			]
 		);
@@ -165,7 +165,7 @@ class Post_Content extends Widget_Base {
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '',
 				'selectors' => [
-					'{{WRAPPER}} .hfe-post-content-parent p' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .hfe-product-content-parent .hfe-product-content-child' => 'color: {{VALUE}};',
 				],
 				'scheme'    => [
 					'type'  => Schemes\Color::get_type(),
@@ -176,14 +176,29 @@ class Post_Content extends Widget_Base {
 		$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			[
-				'name'   => 'typography',
-				'scheme' => Schemes\Typography::TYPOGRAPHY_3,
+				'name'     => 'typography',
+				'scheme'   => Schemes\Typography::TYPOGRAPHY_3,
+				'selector' => '{{WRAPPER}} .hfe-product-content-parent .hfe-product-content-child',
 			]
 		);
 		$this->end_controls_section();
 	}
 	/**
-	 * Render Post Content output on the frontend.
+	 * Render Product Content output on the frontend.
+	 *
+	 * @since x.x.x
+	 * @access protected
+	 */
+	public function render_product_content() {
+		global $product;
+		if ( is_product() ) {
+			$product         = wc_get_product( get_the_ID() );
+			$product_content = $product->get_description();
+		}
+		return $product_content;
+	}
+	/**
+	 * Render Product Content output on the frontend.
 	 *
 	 * Written in PHP and used to generate the final HTML.
 	 *
@@ -192,22 +207,25 @@ class Post_Content extends Widget_Base {
 	 */
 	protected function render() {
 		$settings = $this->get_settings_for_display();
+
 		$this->add_render_attribute(
 			'size',
 			'class',
 			[
-				'hfe-post-content-parent',
+				'hfe-product-content-parent',
 				'elementor-size-' . $settings['size'],
 			]
 		);
+
+		$this->add_render_attribute( 'product_content_child', 'class', 'hfe-product-content-child' );
 		?>
 		<div <?php echo $this->get_render_attribute_string( 'size' ); ?>>
-			<<?php echo $settings['heading_tag']; ?>><?php echo the_content(); ?>
+			<<?php echo $settings['heading_tag']; ?> <?php echo $this->get_render_attribute_string( 'product_content_child' ); ?>><?php echo $this->render_product_content(); ?>
 		</div>
 		<?php
 	}
 	/**
-	 * Render Post Content output in the editor.
+	 * Render Product Content output in the editor.
 	 *
 	 * Written as a Backbone JavaScript template and used to generate the live preview.
 	 *

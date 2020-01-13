@@ -52,3 +52,23 @@
 .elementor-widget-post-title .hfe-post-content-parent.elementor-size-xxl p{
     font-size: 59px;
 }
+
+.elementor-widget-product-content .hfe-product-content-parent.elementor-size-small .hfe-product-content-child{
+    font-size: 15px;
+}
+
+.elementor-widget-product-content .hfe-product-content-parent.elementor-size-medium .hfe-product-content-child{
+    font-size: 19px
+}
+
+.elementor-widget-product-content .hfe-product-content-parent.elementor-size-large .hfe-product-content-child{
+    font-size: 29px
+}
+
+.elementor-widget-product-content .hfe-product-content-parent.elementor-size-xl .hfe-product-content-child{
+    font-size: 39px
+}
+
+.elementor-widget-product-content .hfe-product-content-parent.elementor-size-xxl .hfe-product-content-child{
+    font-size: 59px;
+}

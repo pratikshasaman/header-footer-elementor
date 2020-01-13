@@ -74,6 +74,7 @@ class Widgets_Loader {
 		require_once HFE_DIR . '/inc/widgets-manager/widgets/class-copyright-shortcode.php';
 		require_once HFE_DIR . '/inc/widgets-manager/widgets/class-product-title.php';
 		require_once HFE_DIR . '/inc/widgets-manager/widgets/class-post-content.php';
+		require_once HFE_DIR . '/inc/widgets-manager/widgets/class-product-content.php';
 	}
 
 	/**
@@ -128,6 +129,7 @@ class Widgets_Loader {
 		Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Copyright() );
 		Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Product_Title() );
 		Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Post_Content() );
+		Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Product_Content() );
 	}
 
 }
