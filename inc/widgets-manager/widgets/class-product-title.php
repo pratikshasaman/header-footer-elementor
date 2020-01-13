@@ -204,10 +204,6 @@ class Product_Title extends Widget_Base {
 						'title' => __( 'Right', 'header-footer-elementor' ),
 						'icon'  => 'eicon-text-align-right',
 					],
-					'justify' => [
-						'title' => __( 'Justified', 'header-footer-elementor' ),
-						'icon'  => 'eicon-text-align-justify',
-					],
 				],
 				'default'   => '',
 				'selectors' => [
@@ -237,7 +233,7 @@ class Product_Title extends Widget_Base {
 			[
 				'name'      => 'title_typography',
 				'scheme'    => Scheme_Typography::TYPOGRAPHY_1,
-				'selectors' => '{{WRAPPER}} .elementor-heading-title, {{WRAPPER}} .hfe-product-title a',
+				'selector' => '{{WRAPPER}} .elementor-widget-heading .elementor-heading-title a',
 			]
 		);
 		$this->add_control(
@@ -343,7 +339,7 @@ class Product_Title extends Widget_Base {
 		}
 		$product_title_html = sprintf( '<%1$s %2$s>%3$s</%1$s>', $settings['heading_tag'], $this->get_render_attribute_string( 'title' ), $product_title );
 		?>
-		<div class="hfe-product-title hfe-product-title-wrapper"><?php echo $product_title_html; ?>
+		<div class="hfe-product-title hfe-product-title-wrapper elementor-widget-heading"><?php echo $product_title_html; ?>
 	</div>
 		<?php
 	}
