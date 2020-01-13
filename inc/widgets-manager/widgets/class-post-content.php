@@ -122,7 +122,39 @@ class Post_Content extends Widget_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}}' => 'text-align: {{VALUE}};',
+					'{{WRAPPER}} .hfe-post-content-parent' => 'text-align: {{VALUE}};',
+				],
+			]
+		);
+		$this->add_control(
+			'heading_tag',
+			[
+				'label'   => __( 'HTML Tag', 'header-footer-elementor' ),
+				'type'    => Controls_Manager::SELECT,
+				'options' => [
+					'h1' => __( 'H1', 'header-footer-elementor' ),
+					'h2' => __( 'H2', 'header-footer-elementor' ),
+					'h3' => __( 'H3', 'header-footer-elementor' ),
+					'h4' => __( 'H4', 'header-footer-elementor' ),
+					'h5' => __( 'H5', 'header-footer-elementor' ),
+					'h6' => __( 'H6', 'header-footer-elementor' ),
+				],
+				'default' => 'h2',
+			]
+		);
+		$this->add_control(
+			'size',
+			[
+				'label'   => __( 'Size', 'header-footer-elementor' ),
+				'type'    => Controls_Manager::SELECT,
+				'default' => 'default',
+				'options' => [
+					'default' => __( 'Default', 'header-footer-elementor' ),
+					'small'   => __( 'Small', 'header-footer-elementor' ),
+					'medium'  => __( 'Medium', 'header-footer-elementor' ),
+					'large'   => __( 'Large', 'header-footer-elementor' ),
+					'xl'      => __( 'XL', 'header-footer-elementor' ),
+					'xxl'     => __( 'XXL', 'header-footer-elementor' ),
 				],
 			]
 		);
@@ -133,7 +165,7 @@ class Post_Content extends Widget_Base {
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '',
 				'selectors' => [
-					'{{WRAPPER}}' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .hfe-post-content-parent p' => 'color: {{VALUE}};',
 				],
 				'scheme'    => [
 					'type'  => Schemes\Color::get_type(),
@@ -159,10 +191,20 @@ class Post_Content extends Widget_Base {
 	 * @access protected
 	 */
 	protected function render() {
+		$settings      = $this->get_settings_for_display();
+		$this->add_render_attribute( 'size', 'class',
+			[
+				'hfe-post-content-parent',
+				'elementor-size-' . $settings['size'],
+			]
+		);
 		?>
-		<div class="hfe-post-content-parent">
-			<?php echo the_content(); ?>
+		<!-- <<?php echo $settings['heading_tag']; ?>> -->
+		<div <?php echo $this->get_render_attribute_string('size'); ?>>
+			<<?php echo $settings['heading_tag']; ?>><?php echo the_content(); ?>
+			<?php //echo the_content(); ?>
 		</div>
+		<!-- <<?php ///echo $settings['heading_tag']; ?>> -->
 		<?php
 	}
 	/**

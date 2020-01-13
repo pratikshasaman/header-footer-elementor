@@ -32,3 +32,23 @@
     position: relative;
 }
 
+
+.elementor-widget-post-title .hfe-post-content-parent.elementor-size-small p{
+    font-size: 15px;
+}
+
+.elementor-widget-post-title .hfe-post-content-parent.elementor-size-medium p{
+    font-size: 19px
+}
+
+.elementor-widget-post-title .hfe-post-content-parent.elementor-size-large p{
+    font-size: 29px
+}
+
+.elementor-widget-post-title .hfe-post-content-parent.elementor-size-xl p{
+    font-size: 39px
+}
+
+.elementor-widget-post-title .hfe-post-content-parent.elementor-size-xxl p{
+    font-size: 59px;
+}
