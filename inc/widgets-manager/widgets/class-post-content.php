@@ -191,20 +191,19 @@ class Post_Content extends Widget_Base {
 	 * @access protected
 	 */
 	protected function render() {
-		$settings      = $this->get_settings_for_display();
-		$this->add_render_attribute( 'size', 'class',
+		$settings = $this->get_settings_for_display();
+		$this->add_render_attribute(
+			'size',
+			'class',
 			[
 				'hfe-post-content-parent',
 				'elementor-size-' . $settings['size'],
 			]
 		);
 		?>
-		<!-- <<?php echo $settings['heading_tag']; ?>> -->
-		<div <?php echo $this->get_render_attribute_string('size'); ?>>
+		<div <?php echo $this->get_render_attribute_string( 'size' ); ?>>
 			<<?php echo $settings['heading_tag']; ?>><?php echo the_content(); ?>
-			<?php //echo the_content(); ?>
 		</div>
-		<!-- <<?php ///echo $settings['heading_tag']; ?>> -->
 		<?php
 	}
 	/**
