@@ -75,6 +75,7 @@ class Product_Content extends Widget_Base {
 	public function get_categories() {
 		return [ 'hfe-widgets' ];
 	}
+	
 	/**
 	 * Register Product content controls controls.
 	 *
@@ -98,31 +99,26 @@ class Product_Content extends Widget_Base {
 				'label' => __( 'Style', 'header-footer-elementor' ),
 			]
 		);
-		$this->add_responsive_control(
-			'align',
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
 			[
-				'label'     => __( 'Alignment', 'header-footer-elementor' ),
-				'type'      => Controls_Manager::CHOOSE,
-				'options'   => [
-					'left'    => [
-						'title' => __( 'Left', 'header-footer-elementor' ),
-						'icon'  => 'eicon-text-align-left',
-					],
-					'center'  => [
-						'title' => __( 'Center', 'header-footer-elementor' ),
-						'icon'  => 'eicon-text-align-center',
-					],
-					'right'   => [
-						'title' => __( 'Right', 'header-footer-elementor' ),
-						'icon'  => 'eicon-text-align-right',
-					],
-					'justify' => [
-						'title' => __( 'Justified', 'header-footer-elementor' ),
-						'icon'  => 'eicon-text-align-justify',
-					],
-				],
+				'name'     => 'typography',
+				'scheme'   => Schemes\Typography::TYPOGRAPHY_3,
+				'selector' => '{{WRAPPER}} .hfe-product-content-parent .hfe-product-content-child',
+			]
+		);
+		$this->add_control(
+			'text_color',
+			[
+				'label'     => __( 'Text Color', 'header-footer-elementor' ),
+				'type'      => Controls_Manager::COLOR,
+				'default'   => '',
 				'selectors' => [
-					'{{WRAPPER}} .hfe-product-content-parent' => 'text-align: {{VALUE}};',
+					'{{WRAPPER}} .hfe-product-content-parent .hfe-product-content-child' => 'color: {{VALUE}};',
+				],
+				'scheme'    => [
+					'type'  => Schemes\Color::get_type(),
+					'value' => Schemes\Color::COLOR_3,
 				],
 			]
 		);
@@ -158,27 +154,32 @@ class Product_Content extends Widget_Base {
 				],
 			]
 		);
-		$this->add_control(
-			'text_color',
+		$this->add_responsive_control(
+			'align',
 			[
-				'label'     => __( 'Text Color', 'header-footer-elementor' ),
-				'type'      => Controls_Manager::COLOR,
-				'default'   => '',
+				'label'     => __( 'Alignment', 'header-footer-elementor' ),
+				'type'      => Controls_Manager::CHOOSE,
+				'options'   => [
+					'left'    => [
+						'title' => __( 'Left', 'header-footer-elementor' ),
+						'icon'  => 'eicon-text-align-left',
+					],
+					'center'  => [
+						'title' => __( 'Center', 'header-footer-elementor' ),
+						'icon'  => 'eicon-text-align-center',
+					],
+					'right'   => [
+						'title' => __( 'Right', 'header-footer-elementor' ),
+						'icon'  => 'eicon-text-align-right',
+					],
+					'justify' => [
+						'title' => __( 'Justified', 'header-footer-elementor' ),
+						'icon'  => 'eicon-text-align-justify',
+					],
+				],
 				'selectors' => [
-					'{{WRAPPER}} .hfe-product-content-parent .hfe-product-content-child' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .hfe-product-content-parent' => 'text-align: {{VALUE}};',
 				],
-				'scheme'    => [
-					'type'  => Schemes\Color::get_type(),
-					'value' => Schemes\Color::COLOR_3,
-				],
-			]
-		);
-		$this->add_group_control(
-			Group_Control_Typography::get_type(),
-			[
-				'name'     => 'typography',
-				'scheme'   => Schemes\Typography::TYPOGRAPHY_3,
-				'selector' => '{{WRAPPER}} .hfe-product-content-parent .hfe-product-content-child',
 			]
 		);
 		$this->end_controls_section();
@@ -216,7 +217,6 @@ class Product_Content extends Widget_Base {
 				'elementor-size-' . $settings['size'],
 			]
 		);
-
 		$this->add_render_attribute( 'product_content_child', 'class', 'hfe-product-content-child' );
 		?>
 		<div <?php echo $this->get_render_attribute_string( 'size' ); ?>>
