@@ -15,13 +15,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 /**
- * HFE Product content
+ * HFE Short Description
  *
- * HFE widget for Product Content.
+ * HFE widget for Short Description.
  *
  * @since x.x.x
  */
-class Product_Content extends Widget_Base {
+class Short_Description extends Widget_Base {
 	/**
 	 * Retrieve the widget name.
 	 *
@@ -32,7 +32,7 @@ class Product_Content extends Widget_Base {
 	 * @return string Widget name.
 	 */
 	public function get_name() {
-		return 'product-content';
+		return 'short-description';
 	}
 	/**
 	 * Retrieve the widget title.
@@ -44,7 +44,7 @@ class Product_Content extends Widget_Base {
 	 * @return string Widget title.
 	 */
 	public function get_title() {
-		return __( 'Product Content', 'header-footer-elementor' );
+		return __( 'Short Description', 'header-footer-elementor' );
 	}
 	/**
 	 * Retrieve the widget icon.
@@ -77,7 +77,7 @@ class Product_Content extends Widget_Base {
 	}
 
 	/**
-	 * Register Product content controls controls.
+	 * Register Short Description controls controls.
 	 *
 	 * @since x.x.x
 	 * @access protected
@@ -88,7 +88,7 @@ class Product_Content extends Widget_Base {
 
 	/**
 	 *
-	 * Register Product content General Controls.
+	 * Register Short Description General Controls.
 	 *
 	 * @since x.x.x * @access protected.
 	 */
@@ -104,7 +104,7 @@ class Product_Content extends Widget_Base {
 			[
 				'name'     => 'typography',
 				'scheme'   => Schemes\Typography::TYPOGRAPHY_3,
-				'selector' => '{{WRAPPER}} .hfe-product-content-parent .hfe-product-content-child',
+				'selector' => '{{WRAPPER}} .hfe-short-desp-parent .hfe-short-desp-child',
 			]
 		);
 		$this->add_control(
@@ -114,7 +114,7 @@ class Product_Content extends Widget_Base {
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '',
 				'selectors' => [
-					'{{WRAPPER}} .hfe-product-content-parent .hfe-product-content-child' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .hfe-short-desp-parent .hfe-short-desp-child' => 'color: {{VALUE}};',
 				],
 				'scheme'    => [
 					'type'  => Schemes\Color::get_type(),
@@ -178,28 +178,28 @@ class Product_Content extends Widget_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .hfe-product-content-parent' => 'text-align: {{VALUE}};',
+					'{{WRAPPER}} .hfe-short-desp-child' => 'text-align: {{VALUE}};',
 				],
 			]
 		);
 		$this->end_controls_section();
 	}
 	/**
-	 * Render Product Content output on the frontend.
+	 * Render Short Description output on the frontend.
 	 *
 	 * @since x.x.x
 	 * @access protected
 	 */
-	public function render_product_content() {
+	public function render_short_description() {
 		global $product;
 		if ( is_product() ) {
-			$product         = wc_get_product( get_the_ID() );
-			$product_content = $product->get_description();
+			$product           = wc_get_product( get_the_ID() );
+			$short_description = $product->get_short_description();
 		}
-		return $product_content;
+		return $short_description;
 	}
 	/**
-	 * Render Product Content output on the frontend.
+	 * Render Short Description output on the frontend.
 	 *
 	 * Written in PHP and used to generate the final HTML.
 	 *
@@ -213,19 +213,19 @@ class Product_Content extends Widget_Base {
 			'size',
 			'class',
 			[
-				'hfe-product-content-parent',
+				'hfe-short-desp-parent',
 				'elementor-size-' . $settings['size'],
 			]
 		);
-		$this->add_render_attribute( 'product_content_child', 'class', 'hfe-product-content-child' );
+		$this->add_render_attribute( 'short_desp_child', 'class', 'hfe-short-desp-child' );
 		?>
 		<div <?php echo $this->get_render_attribute_string( 'size' ); ?>>
-			<<?php echo $settings['heading_tag']; ?> <?php echo $this->get_render_attribute_string( 'product_content_child' ); ?>><?php echo $this->render_product_content(); ?>
+			<<?php echo $settings['heading_tag']; ?> <?php echo $this->get_render_attribute_string( 'short_desp_child' ); ?>><?php echo $this->render_short_description(); ?>
 		</div>
 		<?php
 	}
 	/**
-	 * Render Product Content output in the editor.
+	 * Render Short Description output in the editor.
 	 *
 	 * Written as a Backbone JavaScript template and used to generate the live preview.
 	 *

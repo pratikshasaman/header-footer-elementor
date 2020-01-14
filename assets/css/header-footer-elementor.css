@@ -32,7 +32,7 @@
     position: relative;
 }
 
-
+/*Post Title*/
 .elementor-widget-post-title .hfe-post-content-parent.elementor-size-small p{
     font-size: 15px;
 }
@@ -52,7 +52,7 @@
 .elementor-widget-post-title .hfe-post-content-parent.elementor-size-xxl p{
     font-size: 59px;
 }
-
+/*Product Content*/
 .elementor-widget-product-content .hfe-product-content-parent.elementor-size-small .hfe-product-content-child{
     font-size: 15px;
 }
@@ -70,5 +70,26 @@
 }
 
 .elementor-widget-product-content .hfe-product-content-parent.elementor-size-xxl .hfe-product-content-child{
+    font-size: 59px;
+}
+
+/*Short Description*/
+.elementor-widget-short-description .hfe-short-desp-parent.elementor-size-small .hfe-short-desp-child{
+    font-size: 15px;
+}
+
+.elementor-widget-short-description .hfe-short-desp-parent.elementor-size-medium .hfe-short-desp-child{
+    font-size: 19px
+}
+
+.elementor-widget-short-description .hfe-short-desp-parent.elementor-size-large .hfe-short-desp-child{
+    font-size: 29px
+}
+
+.elementor-widget-short-description .hfe-short-desp-parent.elementor-size-xl .hfe-short-desp-child{
+    font-size: 39px
+}
+
+.elementor-widget-short-description .hfe-short-desp-parent.elementor-size-xxl .hfe-short-desp-child{
     font-size: 59px;
 }
